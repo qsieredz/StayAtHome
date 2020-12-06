@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import java.util.Calendar;
+
 public class FirstFragment extends Fragment {
 
     @Override
@@ -24,7 +26,7 @@ public class FirstFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_first, container, false);
         ImageView imgExample = (ImageView) view.findViewById(R.id.imageViewer);
         // FIXME: Global Variable for time
-        int time = 21;
+        int time = 25;
 
         if (time > 24)
             time = 24;
@@ -49,6 +51,14 @@ public class FirstFragment extends Fragment {
         }
         else {
             imgExample.setImageResource(R.drawable.cactus6);
+
+            // Adds tree to monthly view
+            Calendar cal = Calendar.getInstance();
+            int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+
+            char[] dayTracker = MainActivity.getDayTracker().toCharArray();
+            dayTracker[dayOfMonth] = '1';
+            MainActivity.setDayTracker(String.valueOf(dayTracker));
         }
 
         // Displays the amount of hours

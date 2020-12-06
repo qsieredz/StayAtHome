@@ -15,10 +15,23 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static String dayTracker =
+            "0000000000000000000000000000000";
+            //"1111111111111111111111111111111";
+    public static String getDayTracker() {
+        return dayTracker;
+    }
+    public static void setDayTracker(String x){
+        dayTracker = x;
+    }
+
+    public static String PACKAGE_NAME;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        PACKAGE_NAME = getApplicationContext().getPackageName();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
